@@ -28,9 +28,9 @@ steps:
       echo "Complete Branch Name: $BRANCH_NAME"
       export _ENVIRON=$(cat /persist/env)
       echo "Current environemnt is : $_ENVIRON"
-      docker build -t eu.gcr.io/data-rainfall-396115/graf:sprint54 .
+      docker build -t ${_AREG_URL}/$PROJECT_ID/${_AREG_NAME}/graf:$BRANCH_NAME .
       docker images | grep graf
-      docker push eu.gcr.io/data-rainfall-396115/graf:sprint54
+      docker push ${_AREG_URL}/$PROJECT_ID/${_AREG_NAME}/graf:$BRANCH_NAME
     volumes:
       - name: 'myvolume'
         path: '/persist'
@@ -39,4 +39,6 @@ timeout: 900s
 options:
   machineType: 'N1_HIGHCPU_8'
 substitutions:
+  _AREG_URL: europe-north1-docker.pkg.dev
+  _AREG_NAME: my-artifacts
   _ENVIRON:
