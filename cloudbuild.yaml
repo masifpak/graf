@@ -29,6 +29,7 @@ steps:
       export _ENVIRON=$(cat /persist/env)
       echo "Current environemnt is : $_ENVIRON"
       docker build -t eu.gcr.io/graf:$_ENVIRON .
+      docker images
       docker push eu.gcr.io/graf:$_ENVIRON
     volumes:
       - name: 'myvolume'
