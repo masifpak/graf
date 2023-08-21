@@ -24,7 +24,7 @@ steps:
       - 'BRANCH_NAME=$BRANCH_NAME'
       - '_ENVIRON=_ENVIRON'
       - '_AREG_URL=europe-north1-docker.pkg.dev'
-      - '_AREG_NAME= my-artifacts'
+      - '_AREG_NAME=my-artifacts'
       - 'PROJECT_ID=$PROJECT_ID'
     script: |
       #!/usr/bin/env bash
