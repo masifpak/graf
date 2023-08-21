@@ -21,14 +21,15 @@ steps:
   - name: gcr.io/cloud-builders/docker
     id: build-image
     env:
+      - 'BRANCH_NAME=$BRANCH_NAME'
       - '_ENVIRON=_ENVIRON'
     script: |
       #!/usr/bin/env bash
       echo "Complete Branch Name: $BRANCH_NAME"
       export _ENVIRON=$(cat /persist/env)
       echo "Current environemnt is : $_ENVIRON"
-      docker build -t eu.gcr.io/graf:${_ENVIRON} .
-      docker push eu.gcr.io/graf:${_ENVIRON}
+      docker build -t eu.gcr.io/graf:$_ENVIRON .
+      docker push eu.gcr.io/graf:$_ENVIRON
     volumes:
       - name: 'myvolume'
         path: '/persist'
