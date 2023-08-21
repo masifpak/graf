@@ -1,3 +1,4 @@
+
 steps:
   # Compile code.
   - name: maven:3-openjdk-11
@@ -15,11 +16,11 @@ steps:
       echo $_BR_NAME > /persist/env
       cat /persist/env
       echo "First part of branch Name: $_BR_NAME"
+      mvn clean install -DskipTests=true
     volumes:
       - name: 'myvolume'
         path: '/persist'
   - name: gcr.io/cloud-builders/docker
-    id: build-image
     env:
       - 'BRANCH_NAME=$BRANCH_NAME'
       - '_ENVIRON=_ENVIRON'
@@ -28,10 +29,8 @@ steps:
       echo "Complete Branch Name: $BRANCH_NAME"
       export _ENVIRON=$(cat /persist/env)
       echo "Current environemnt is : $_ENVIRON"
-      docker build -t '${_AREG_URL}/${PROJECT_ID}/${_AREG_NAME}/graf:${_ENVIRON}' .
-      #docker images | grep graf
-      docker push '$_AREG_URL/$PROJECT_ID/$_AREG_NAME/graf:${_ENVIRON}'
-      #args: ['build', '-t', '${_AREG_URL}/$PROJECT_ID/${_AREG_NAME}/grupi-file-stager:$_BR_NAME', '.']
+      docker build -t ${_AREG_URL}/$PROJECT_ID/${_AREG_NAME}/grupi-file-stager:${_ENVIRON} .
+      docker push  ${_AREG_URL}/$PROJECT_ID/${_AREG_NAME}/grupi-file-stager:${_ENVIRON}
     volumes:
       - name: 'myvolume'
         path: '/persist'
@@ -42,5 +41,3 @@ substitutions:
   _AREG_URL: europe-north1-docker.pkg.dev
   _AREG_NAME: my-artifacts
   _ENVIRON:
-images:
-  - '${_AREG_URL}/$PROJECT_ID/${_AREG_NAME}/graf:$_ENVIRON'
