@@ -23,7 +23,7 @@ steps:
     env:
       - 'BRANCH_NAME=$BRANCH_NAME'
       - '_ENVIRON=_ENVIRON'
-        script: |
+      script: |
         #!/usr/bin/env bash
         echo "Complete Branch Name: $BRANCH_NAME"
         export _ENVIRON=$(cat /persist/env)
