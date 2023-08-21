@@ -15,11 +15,13 @@ steps:
       echo $_BR_NAME > /persist/env
       cat /persist/env
       echo "First part of branch Name: $_BR_NAME"
-        #mvn clean install -DskipTests=true
     volumes:
       - name: 'myvolume'
         path: '/persist'
   - name: gcr.io/cloud-builders/docker
+    id: build-image
+    env:
+      - '_ENVIRON=_ENVIRON'
     script: |
       #!/usr/bin/env bash
       echo "Complete Branch Name: $BRANCH_NAME"
@@ -29,9 +31,7 @@ steps:
       docker push eu.gcr.io/graf:${_ENVIRON} .
     volumes:
       - name: 'myvolume'
-    env:
-      - _ENVIRON=_ENVIRON
-
+        path: '/persist'
         #args: ['build', '-t', '${_AREG_URL}/$PROJECT_ID/${_AREG_NAME}/grupi-file-stager:$BRANCH_NAME', '.']
 timeout: 900s
 options:
