@@ -1,0 +1,13 @@
+fi/free/onefree/grupi/batch/filestager/config/datasource/TaskDataSourceConfiguration.class
+fi/free/onefree/grupi/batch/filestager/tasklet/GrupiFileDownloadTasklet.class
+fi/free/onefree/grupi/batch/filestager/exception/GrupiBatchException.class
+fi/free/onefree/grupi/batch/filestager/GrupiFileStagerApplication.class
+fi/free/onefree/grupi/batch/filestager/listener/GrupiFileStagerJobExecutionListener.class
+fi/free/onefree/grupi/batch/filestager/listener/GrupiFileStagerStepExecutionListener.class
+fi/free/onefree/grupi/batch/filestager/item/StgGrupiItemProcessor.class
+fi/free/onefree/grupi/batch/filestager/GrupiFileStagerConstants.class
+fi/free/onefree/grupi/batch/filestager/config/GrupiFileStagerBatchConfiguration.class
+fi/free/onefree/grupi/batch/filestager/config/GrupiRunIdIncrementer.class
+fi/free/onefree/grupi/batch/filestager/config/datasource/DataflowDataSourceConfiguration.class
+fi/free/onefree/grupi/batch/filestager/mapper/StgGrupiFileLineMapper.class
+fi/free/onefree/grupi/batch/filestager/util/ParamExtractor.class

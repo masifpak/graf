@@ -1,0 +1,40 @@
+steps:
+  # Compile code.
+  - name: maven:3-openjdk-11
+    id: maven-build
+    env:
+      - 'BRANCH_NAME=$BRANCH_NAME'
+      - 'REPO_NAME=$REPO_NAME'
+    script: |
+      #!/usr/bin/env bash
+      echo "Branch Name: $BRANCH_NAME"
+      echo "Repo Name:   $REPO_NAME"
+      export CI_COMMIT_BRANCH_LOWER=${BRANCH_NAME,,}
+      export CI_COMMIT_BRANCH_UNDERSCORE=${CI_COMMIT_BRANCH_LOWER/-/_}
+      export _BR_NAME=$(echo $CI_COMMIT_BRANCH_UNDERSCORE | cut -d "_" -f1)
+      echo $_BR_NAME > /persist/env
+      cat /persist/env
+      echo "First part of branch Name: $_BR_NAME"
+        #mvn clean install -DskipTests=true
+    volumes:
+      - name: 'myvolume'
+        path: '/persist'
+  - name: gcr.io/cloud-builders/docker
+    script: |
+      #!/usr/bin/env bash
+      echo "Complete Branch Name: $BRANCH_NAME"
+      export _ENVIRON=$(cat /persist/env)
+      echo "Current environemnt is : $_ENVIRON"
+      docker build -t eu.gcr.io/graf:${_ENVIRON} .
+      docker push eu.gcr.io/graf:${_ENVIRON} .
+    volumes:
+      - name: 'myvolume'
+    env:
+      - _ENVIRON=_ENVIRON
+
+        #args: ['build', '-t', '${_AREG_URL}/$PROJECT_ID/${_AREG_NAME}/grupi-file-stager:$BRANCH_NAME', '.']
+timeout: 900s
+options:
+  machineType: 'N1_HIGHCPU_8'
+substitutions:
+  _ENVIRON:

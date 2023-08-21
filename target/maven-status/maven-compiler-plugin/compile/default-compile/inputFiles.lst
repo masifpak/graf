@@ -1,0 +1,13 @@
+/home/datalounges/graf/src/main/java/fi/free/onefree/grupi/batch/filestager/GrupiFileStagerApplication.java
+/home/datalounges/graf/src/main/java/fi/free/onefree/grupi/batch/filestager/listener/GrupiFileStagerStepExecutionListener.java
+/home/datalounges/graf/src/main/java/fi/free/onefree/grupi/batch/filestager/listener/GrupiFileStagerJobExecutionListener.java
+/home/datalounges/graf/src/main/java/fi/free/onefree/grupi/batch/filestager/config/GrupiFileStagerBatchConfiguration.java
+/home/datalounges/graf/src/main/java/fi/free/onefree/grupi/batch/filestager/mapper/StgGrupiFileLineMapper.java
+/home/datalounges/graf/src/main/java/fi/free/onefree/grupi/batch/filestager/config/GrupiRunIdIncrementer.java
+/home/datalounges/graf/src/main/java/fi/free/onefree/grupi/batch/filestager/util/ParamExtractor.java
+/home/datalounges/graf/src/main/java/fi/free/onefree/grupi/batch/filestager/exception/GrupiBatchException.java
+/home/datalounges/graf/src/main/java/fi/free/onefree/grupi/batch/filestager/item/StgGrupiItemProcessor.java
+/home/datalounges/graf/src/main/java/fi/free/onefree/grupi/batch/filestager/tasklet/GrupiFileDownloadTasklet.java
+/home/datalounges/graf/src/main/java/fi/free/onefree/grupi/batch/filestager/config/datasource/DataflowDataSourceConfiguration.java
+/home/datalounges/graf/src/main/java/fi/free/onefree/grupi/batch/filestager/GrupiFileStagerConstants.java
+/home/datalounges/graf/src/main/java/fi/free/onefree/grupi/batch/filestager/config/datasource/TaskDataSourceConfiguration.java
