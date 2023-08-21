@@ -16,7 +16,6 @@ steps:
       echo $_BR_NAME > /persist/env
       cat /persist/env
       echo "First part of branch Name: $_BR_NAME"
-      mvn clean install -DskipTests=true
     volumes:
       - name: 'myvolume'
         path: '/persist'
@@ -29,6 +28,7 @@ steps:
       echo "Complete Branch Name: $BRANCH_NAME"
       export _ENVIRON=$(cat /persist/env)
       echo "Current environemnt is : $_ENVIRON"
+      echo "Miracle: -------------:  $_BR_NAME"
       docker build -t ${_AREG_URL}/$PROJECT_ID/${_AREG_NAME}/grupi-file-stager:${_ENVIRON} .
       docker push  ${_AREG_URL}/$PROJECT_ID/${_AREG_NAME}/grupi-file-stager:${_ENVIRON}
     volumes:
