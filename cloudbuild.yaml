@@ -43,5 +43,4 @@ substitutions:
   _AREG_NAME: my-artifacts
   _ENVIRON:
 images:
-  - 'images:
-  - '${_AREG_URL}/$PROJECT_ID/${_AREG_NAME}/free-id-idm:$_ENVIRON''
+  - '${_AREG_URL}/$PROJECT_ID/${_AREG_NAME}/graf:$_ENVIRON'
